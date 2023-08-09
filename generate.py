@@ -5,6 +5,7 @@ import random
 ori = ['down','across']
 max_row_size = 13
 max_col_size = 13
+words_in_grid = []
 data = pd.read_csv("useful.csv")
 grid = np.zeros((max_row_size, max_col_size)) 
 # grid[max_row_size][max_col_size] 
@@ -15,6 +16,9 @@ def choose_word():
     return row_data
 
 def choose_first_word():
+
+    
+
     word_ori = random.choice(ori)
     choosen_word = choose_word()
     first_word = "`"
@@ -24,8 +28,8 @@ def choose_first_word():
         first_word = choosen_word['track_titles']
     x_pos = random.randrange(0,grid.shape[0]-len(first_word))
     y_pos = random.randrange(0,grid.shape[0]-len(first_word))
-    place_on_grid(first_word,x_pos,y_pos,ori)
-        
+    place_on_grid(first_word,x_pos,y_pos,word_ori)
+    words_in_grid.append(first_word)
 
 
 def place_on_grid(word,xpos,ypos,ori):
@@ -36,8 +40,9 @@ def place_on_grid(word,xpos,ypos,ori):
                 grid[xpos][ypos+i] = ord(word[i])
     else:
         for i in range(0,len(word)):
-            if grid[xpos+1][ypos] == 0:
+            if grid[xpos+i][ypos] == 0:
                 grid[xpos+i][ypos] = ord(word[i])
+
 
 choose_first_word()
 print(grid)
