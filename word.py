@@ -23,42 +23,41 @@ class Word():
         row_data = data.iloc[song_id]
         return row_data
 
-    def choose_orientation(self):
-        word_ori = random.choice(ori)
+    def choose_orientation(self,word_ori):
         self.orientation = word_ori
 
     def choose_word(self):
         choosen_index = self.choose_index()
         choosen_word = ""
         if choosen_index['track_word_count'] > 1:
-            choosen_word = choosen_index['track_intials']
-            self.word = choosen_word
-            self.id = choosen_index['id']
+            choosen_word = choosen_index['track_intials'].strip()
         else:
-            choosen_word = choosen_index['track_titles']
+            choosen_word = choosen_index['track_titles'].strip()
+ 
+        if choosen_word in words_in_grid:
+            self.choose_word()
+        else:
             self.word = choosen_word
             self.id = choosen_index['id']
+            
 
-
-    def xpos(self):
-        x_pos = random.randrange(0,max_row_size- len(self.word))
+    def xpos(self,x_pos):
         self.x = x_pos
 
 
-    def ypos(self):
-        y_pos = random.randrange(0,max_col_size- len(self.word))
+    def ypos(self,y_pos):
         self.y = y_pos
 
 
     def place_on_grid(self,grid):
-        print(self.word)
-        if self.orientation == "down":
+        print(self.orientation)
+        print(self.orientation == "down")
+        if self.orientation == "across":
             for i in range(0,len(self.word)):
-                # grid[self.x][self.y+i] = self.word[i]
                 if grid[self.x][self.y+i] == 0:
                     grid[self.x][self.y+i] = ord(self.word[i])
         else:
             for i in range(0,len(self.word)):
-                # grid[self.x+i][self.y] = self.word[i]
-                if grid[self.x+1][self.y] == 0:
+                if grid[self.x+i][self.y] == 0:
                     grid[self.x+i][self.y] = ord(self.word[i])
+        words_in_grid.append(self.word)
