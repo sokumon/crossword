@@ -60,4 +60,5 @@ class Word():
             for i in range(0,len(self.word)):
                 if grid[self.x+i][self.y] == 0:
                     grid[self.x+i][self.y] = ord(self.word[i])
-        words_in_grid.append(self.word)
+        print(grid)
+        
