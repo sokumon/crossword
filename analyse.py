@@ -25,21 +25,24 @@ def giveInit(song_name):
     return intial
 
 
+track_word_len = []
 for i in range(len(track_titles)):
     track_titles[i] = track_titles[i].lower()
     temp = track_titles[i].encode('ascii',"ignore")
     track_titles[i] = temp.decode()
     pattern = r'[\[\(].*?[\]\)]'
     clean_text = re.sub(pattern, '', track_titles[i])
-    track_titles[i] = clean_text
-    track_word_count.append(len(track_titles[i].split()))
-    if track_word_count[i] > 1:
-        track_intials.append(giveInit(track_titles[i]))
-    else:
-        track_intials.append("NA")
-    for j in range(len(alphabets)):
-        if track_titles[i].startswith(alphabets[j]):
-            count[j] = count[j] + 1
+    track_titles[i] = clean_text.replace(" ", "")
+    track_word_len.append(len(track_titles[i]))
+    # anyaled no of songs start with a specific alphabet
+    # track_word_count.append(len(track_titles[i].split()))
+    # if track_word_count[i] > 1:
+    #     track_intials.append(giveInit(track_titles[i]))
+    # else:
+    #     track_intials.append("NA")
+    # for j in range(len(alphabets)):
+    #     if track_titles[i].startswith(alphabets[j]):
+    #         count[j] = count[j] + 1
 
 
 print(len(count))
@@ -55,6 +58,11 @@ print(track_titles)
 # plot.ylabel("count")
 # plot.show()
 
+plot.bar(track_titles,track_word_len,color="red",width=0.9)
+plot.xlabel("alphabets")
+plot.ylabel("count")
+plot.show()
+
 for t in range(5):
     print(track_titles[t],track_word_count[t],track_intials[t])
 
@@ -66,16 +74,16 @@ for t in range(5):
 # final_data = pd.DataFrame(final_dict)
 # final_data.to_csv("useful.csv")
 
-data.insert(loc=0, column='id', value=data.track_title.factorize()[0])
-print(data.head())
-data.drop(['track_title'],axis=1,inplace=True)
-data.drop(['album_name'],axis=1,inplace=True)
-data.drop(['track_n'],axis=1,inplace=True)
-data.to_csv("useful_lyrics.csv",index=False)
+# data.insert(loc=0, column='id', value=data.track_title.factorize()[0])
+# print(data.head())
+# data.drop(['track_title'],axis=1,inplace=True)
+# data.drop(['album_name'],axis=1,inplace=True)
+# data.drop(['track_n'],axis=1,inplace=True)
+# data.to_csv("useful_lyrics.csv",index=False)
 
-data_again = pd.read_csv("useful_lyrics.csv")
-data_new = data_again.groupby(data_again.id,as_index=False).size()
-data_new.to_csv("useful_indexes.csv",index=False)
+# data_again = pd.read_csv("useful_lyrics.csv")
+# data_new = data_again.groupby(data_again.id,as_index=False).size()
+# data_new.to_csv("useful_indexes.csv",index=False)
 
 # random range
 # print(random.randrange(0,2))
