@@ -50,7 +50,7 @@ class Word():
 
 
     def place_on_grid(self,grid):
-        print(self.orientation)
+        print("Word placed to the grid is "+self.word)
         print(self.orientation == "down")
         if self.orientation == "across":
             for i in range(0,len(self.word)):
