@@ -1,10 +1,11 @@
 import pandas as pd
 import numpy as np
 import random
-from word import Word, words_in_grid
+from word import Word
 
 
 ori = ['down','across']
+words_in_grid = []
 max_row_size = 13
 max_col_size = 13
 only_words_on_grid = []
@@ -69,7 +70,7 @@ for ts in range(0,3):
                     choosen_intersection.append(intersection[j])
         
             if len(potenial_next_words) == 0:
-                words_in_grid[ts].choosen_word()
+                words_in_grid[ts].choose_word()
             else:
                 place_anywhere(words_in_grid[ts])
                 print("First word is placed at x ",words_in_grid[ts].x,"y",words_in_grid[ts].y)
@@ -104,7 +105,7 @@ for ts in range(0,3):
                     if len(random_potenial_next_word.word) + prev_word.y < max_col_size :
                         next_word.word = random_potenial_next_word.word
                         next_word.id = random_potenial_next_word.id
-                        next_word.x = prev_word.x - random_potenial_next_word.word.index(temp_char)
+                        next_word.x = abs(prev_word.x - random_potenial_next_word.word.index(temp_char))
                         next_word.y = prev_word.y + prev_word.word.find(temp_char)
                         print("Next word x  is",next_word.x)    
                         print("Next word y is ",next_word.y)
@@ -123,7 +124,7 @@ for ts in range(0,3):
                         next_word.word = random_potenial_next_word.word
                         next_word.id = random_potenial_next_word.id
                         next_word.x = (prev_word.x + prev_word.word.index(temp_char))
-                        next_word.y = (prev_word.y - random_potenial_next_word.word.index(temp_char))
+                        next_word.y = abs(prev_word.y - random_potenial_next_word.word.index(temp_char))
                         print("Next word is " + next_word.word)
                         print("Next word x  is ",next_word.x)    
                         print("Next word y is ",next_word.y)
@@ -142,13 +143,20 @@ for ts in range(0,3):
                         choosen_intersection.remove(choosen_intersection[rand_num])
 
 
-        potenial_next_words = []
-        choosen_intersection = []
-        for j in range(0,len(intersection)):
-            if intersection[j] != False and len(intersection[j]) == 1:
-                print(words_in_grid[ts].word,intersection[j],words_in_grid[j].word)
-                potenial_next_words.append(words_in_grid[j]) 
-                choosen_intersection.append(intersection[j])
+        print("Potenaial next words for "+words_in_grid[ts].word+" are")
+        while (len(potenial_next_words) == 0):
+            for j in range(0,len(intersection)):
+                if intersection[j] != False and len(intersection[j]) == 1:
+                    print(words_in_grid[ts].word,intersection[j],words_in_grid[j].word)
+                    potenial_next_words.append(words_in_grid[j]) 
+                    choosen_intersection.append(intersection[j])
+        
+            if len(potenial_next_words) == 0:
+                words_in_grid[ts].choosen_word()
+            else:
+                place_anywhere(words_in_grid[ts])
+                print("First word is placed at x ",words_in_grid[ts].x,"y",words_in_grid[ts].y)
+                already_placed_words.append(words_in_grid[ts].word)
             
         
     

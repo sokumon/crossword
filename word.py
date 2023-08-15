@@ -37,6 +37,7 @@ class Word():
         if choosen_word in words_in_grid:
             self.choose_word()
         else:
+            words_in_grid.append(choosen_word)
             self.word = choosen_word
             self.id = choosen_index['id']
             
