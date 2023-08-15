@@ -9,7 +9,7 @@ max_row_size = 21
 max_col_size = 21
 only_words_on_grid = []
 already_placed_words = []
-
+print("hello")
 # grid is the board on which the words are placed
 grid = np.zeros((max_row_size, max_col_size)) 
 
