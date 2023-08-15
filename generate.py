@@ -3,15 +3,38 @@ import numpy as np
 import random
 from word import Word
 
-
 ori = ['down','across']
 words_in_grid = []
 max_row_size = 13
 max_col_size = 13
 only_words_on_grid = []
 already_placed_words = []
+
+
 # grid is the board on which the words are placed
 grid = np.zeros((max_row_size, max_col_size)) 
+
+
+def place_on_grid(word,grid):
+    print("Word placed to the grid is "+word.word)
+    print(word.orientation == "down")
+    if word.orientation == "across":
+        for i in range(0,len(word.word)):
+            if word.y + i < max_col_size:
+                if grid[word.x][word.y+i] == 0:
+                    grid[word.x][word.y+i] = ord(word.word[i])
+            else:
+                raise Exception("Word is out of bounds")
+    else:
+        for i in range(0,len(word.word)):
+            if word.x + i < max_row_size:
+                if grid[word.x+i][word.y] == 0:
+                    grid[word.x+i][word.y] = ord(word.word[i])
+            else:
+                raise Exception("Word is out of bounds")
+
+
+
 # print(grid)
 
 def place_anywhere(wordObject):
@@ -21,7 +44,7 @@ def place_anywhere(wordObject):
     wordObject.xpos(x_pos)
     y_pos = random.randrange(0,max_col_size- len(wordObject.word))
     wordObject.ypos(y_pos)
-    wordObject.place_on_grid(grid)
+    place_on_grid(wordObject,grid)
 
 
 
@@ -29,7 +52,13 @@ def place_anywhere(wordObject):
 def generateWords():
     while(len(words_in_grid) < 13):
         new_word = Word()
-        new_word.choose_word()
+        new_word.pick_word()
+        unique = False
+        for i in range(0,len(words_in_grid)):
+            if words_in_grid[i].word == new_word.word:
+                new_word = Word()
+                new_word.pick_word()
+ 
         words_in_grid.append(new_word)
 
 
@@ -49,18 +78,22 @@ def calculateIntersections():
     return intersections
 
 
+
+
 # print(intersections)"
 generateWords()
+for i in range(0,len(words_in_grid)):
+    print(words_in_grid[i].word)
 intersections = calculateIntersections()
 
 
 potenial_next_words = []
 choosen_intersection = []
 for ts in range(0,3):
-    intersection = intersections[words_in_grid[ts].word]
+    
     if ts == 0:
         # first word is placed anywhere
-
+        intersection = intersections[words_in_grid[ts].word]
         print("Potenaial next words for "+words_in_grid[ts].word+" are")
         while (len(potenial_next_words) == 0):
             for j in range(0,len(intersection)):
@@ -70,7 +103,8 @@ for ts in range(0,3):
                     choosen_intersection.append(intersection[j])
         
             if len(potenial_next_words) == 0:
-                words_in_grid[ts].choose_word()
+                words_in_grid[ts] = Word()
+                words_in_grid[ts].pick_word()
             else:
                 place_anywhere(words_in_grid[ts])
                 print("First word is placed at x ",words_in_grid[ts].x,"y",words_in_grid[ts].y)
@@ -110,7 +144,7 @@ for ts in range(0,3):
                         print("Next word x  is",next_word.x)    
                         print("Next word y is ",next_word.y)
                         
-                        next_word.place_on_grid(grid)
+                        place_on_grid(next_word,grid)
                         already_placed_words.append(next_word.word)
 
                         potenial_next_words.remove(potenial_next_words[rand_num])
@@ -130,14 +164,11 @@ for ts in range(0,3):
                         print("Next word y is ",next_word.y)
                 
 
-                        next_word.place_on_grid(grid)
+                        place_on_grid(next_word,grid)
                         already_placed_words.append(next_word.word)
 
                         potenial_next_words.remove(potenial_next_words[rand_num])
                         choosen_intersection.remove(choosen_intersection[rand_num])
-
-
-                        break
                     else:
                         potenial_next_words.remove(potenial_next_words[rand_num])
                         choosen_intersection.remove(choosen_intersection[rand_num])
@@ -158,10 +189,6 @@ for ts in range(0,3):
                 print("First word is placed at x ",words_in_grid[ts].x,"y",words_in_grid[ts].y)
                 already_placed_words.append(words_in_grid[ts].word)
             
-        
-    
-        
-        # words_in_grid.remove(words_in_grid[ts])
                 
 
 
