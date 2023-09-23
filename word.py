@@ -16,8 +16,8 @@ class Word():
         self.id = 0
         self.word = ""
         self.orientation = ""
-        self.x = 0
-        self.y = 0
+        # self.x = 0
+        # self.y = 0
         self.lyrics = ""
         
 
@@ -43,12 +43,4 @@ class Word():
         rand_num = random.randrange(0,end_random)
         self.lyrics = lyrics.iloc[rand_num]['lyric']
         
-            
-
-    def xpos(self,x_pos):
-        self.x = x_pos
-
-
-    def ypos(self,y_pos):
-        self.y = y_pos
 

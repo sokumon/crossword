@@ -58,13 +58,13 @@ print(track_titles)
 # plot.ylabel("count")
 # plot.show()
 
-plot.bar(track_titles,track_word_len,color="red",width=0.9)
-plot.xlabel("alphabets")
-plot.ylabel("count")
-plot.show()
+# plot.bar(track_titles,track_word_len,color="red",width=0.9)
+# plot.xlabel("alphabets")
+# plot.ylabel("count")
+# plot.show()
 
-for t in range(5):
-    print(track_titles[t],track_word_count[t],track_intials[t])
+# for t in range(5):
+#     print(track_titles[t],track_word_count[t],track_intials[t])
 
 # final_dict = {
 #     "track_titles":track_titles,
@@ -87,3 +87,25 @@ for t in range(5):
 
 # random range
 # print(random.randrange(0,2))
+
+# intersection can be a list to tuples(song_id,intersection_id)
+data_again_2 = pd.read_csv("useful.csv")
+for i in range(0,5):
+    if data_again_2['track_word_count'][i] > 1:
+        word = data_again_2['track_intials'][i]
+        for j in range(i,len(data_again_2['id'])):
+            if data_again_2['track_word_count'][j] > 1:
+                inter_word = data_again_2['track_intials'][j]
+                intersection = ''.join(set(word).intersection(inter_word))
+                print(word,inter_word,intersection)
+            else:
+                inter_word = data_again_2['track_intials'][j]
+                intersection = ''.join(set(word).intersection(inter_word))
+                print(word,inter_word,intersection)
+    else:
+        word = data_again_2['track_titles'][i]
+        for j in range(i,len(data_again_2['id'])):
+            if data_again_2['track_word_count'][j] > 1:
+                inter_word = data_again_2['track_titles'][j]
+                intersection = ''.join(set(word).intersection(inter_word))
+                print(word,inter_word,intersection)

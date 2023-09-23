@@ -5,13 +5,13 @@ from word import Word
 
 ori = ['down','across']
 words_in_grid = []
-max_row_size = 21
-max_col_size = 21
+max_row_size = 13
+max_col_size = 13
 only_words_on_grid = []
 already_placed_words = []
 print("hello")
 # grid is the board on which the words are placed
-grid = np.zeros((max_row_size, max_col_size)) 
+grid = []
 
 def place_on_grid(word,grid):
     print("Word placed to the grid is "+word.word)
@@ -125,3 +125,4 @@ while(no_of_words < 13):
         no_of_words = no_of_words + 1
         
 
+print(grid)
