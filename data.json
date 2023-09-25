@@ -1,102 +1,86 @@
 [
     {
-        "current_word": "pr",
+        "current_word": "ti",
         "current_word_ori": "across",
-        "next_word": "afterglow",
-        "intersection_index_current_word": 1,
-        "intersection_index_next_word": 4,
-        "intersection_letter": "r"
-    },
-    {
-        "current_word": "afterglow",
-        "current_word_ori": "down",
-        "next_word": "ti",
-        "intersection_index_current_word": 2,
-        "intersection_index_next_word": 0,
+        "next_word": "betty",
+        "intersection_index_current_word": 0,
+        "intersection_index_next_word": 2,
         "intersection_letter": "t"
     },
     {
-        "current_word": "ti",
-        "current_word_ori": "across",
-        "next_word": "mirrorball",
-        "intersection_index_current_word": 1,
-        "intersection_index_next_word": 1,
-        "intersection_letter": "i"
-    },
-    {
-        "current_word": "mirrorball",
+        "current_word": "betty",
         "current_word_ori": "down",
-        "next_word": "nbnc",
-        "intersection_index_current_word": 6,
+        "next_word": "cbbh",
+        "intersection_index_current_word": 0,
         "intersection_index_next_word": 1,
         "intersection_letter": "b"
     },
     {
-        "current_word": "nbnc",
+        "current_word": "cbbh",
         "current_word_ori": "across",
         "next_word": "cp",
-        "intersection_index_current_word": 3,
+        "intersection_index_current_word": 0,
         "intersection_index_next_word": 0,
         "intersection_letter": "c"
     },
     {
         "current_word": "cp",
         "current_word_ori": "down",
-        "next_word": "epiphany",
+        "next_word": "superman",
         "intersection_index_current_word": 1,
-        "intersection_index_next_word": 1,
+        "intersection_index_next_word": 2,
         "intersection_letter": "p"
     },
     {
-        "current_word": "epiphany",
+        "current_word": "superman",
         "current_word_ori": "across",
-        "next_word": "evermore",
-        "intersection_index_current_word": 0,
-        "intersection_index_next_word": 0,
-        "intersection_letter": "e"
-    },
-    {
-        "current_word": "evermore",
-        "current_word_ori": "down",
-        "next_word": "yoyok",
-        "intersection_index_current_word": 5,
-        "intersection_index_next_word": 1,
-        "intersection_letter": "o"
-    },
-    {
-        "current_word": "yoyok",
-        "current_word_ori": "across",
-        "next_word": "ybwm",
-        "intersection_index_current_word": 0,
-        "intersection_index_next_word": 0,
-        "intersection_letter": "y"
-    },
-    {
-        "current_word": "ybwm",
-        "current_word_ori": "down",
-        "next_word": "komh",
-        "intersection_index_current_word": 3,
-        "intersection_index_next_word": 2,
-        "intersection_letter": "m"
-    },
-    {
-        "current_word": "komh",
-        "current_word_ori": "across",
-        "next_word": "breathe",
-        "intersection_index_current_word": 3,
-        "intersection_index_next_word": 5,
-        "intersection_letter": "h"
-    },
-    {
-        "current_word": "breathe",
-        "current_word_ori": "down",
-        "next_word": "tm",
+        "next_word": "dr",
         "intersection_index_current_word": 4,
+        "intersection_index_next_word": 1,
+        "intersection_letter": "r"
+    },
+    {
+        "current_word": "dr",
+        "current_word_ori": "down",
+        "next_word": "tbd",
+        "intersection_index_current_word": 0,
+        "intersection_index_next_word": 2,
+        "intersection_letter": "d"
+    },
+    {
+        "current_word": "tbd",
+        "current_word_ori": "across",
+        "next_word": "tl",
+        "intersection_index_current_word": 0,
         "intersection_index_next_word": 0,
         "intersection_letter": "t"
     },
     {
-        "current_word": "tm",
+        "current_word": "tl",
+        "current_word_ori": "down",
+        "next_word": "yail",
+        "intersection_index_current_word": 1,
+        "intersection_index_next_word": 3,
+        "intersection_letter": "l"
+    },
+    {
+        "current_word": "yail",
+        "current_word_ori": "across",
+        "next_word": "hi",
+        "intersection_index_current_word": 2,
+        "intersection_index_next_word": 1,
+        "intersection_letter": "i"
+    },
+    {
+        "current_word": "hi",
+        "current_word_ori": "down",
+        "next_word": "lh",
+        "intersection_index_current_word": 0,
+        "intersection_index_next_word": 1,
+        "intersection_letter": "h"
+    },
+    {
+        "current_word": "lh",
         "current_word_ori": "across",
         "next_word": "",
         "intersection_index_current_word": "",

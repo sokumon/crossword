@@ -40,35 +40,44 @@ print(words_in_grid)
 # check for intersection with previous word with one letter if not choose another
 i = 1
 prev_intersection = ""
+max_iterations = 10 
+iterations_with_condition_met = 0
 while (i < 13):
-    # print(i)
+    print("i is ",i)
     word_new = Word()
     word_new.pick_word()
     temp = word_new.word
-    word_prev = words_in_grid[i-1]
-    intersection = ''.join(set(temp).intersection(word_prev['current_word']))
-    print("intersectipon is", prev_intersection)
-    if temp != word_prev['current_word']  and len(intersection) == 1 and prev_intersection != intersection:
+    for z in range(i-1,0):
+        word_prev = words_in_grid[i-1]
+        print(word_prev)
+        intersection = ''.join(set(temp).intersection(word_prev['current_word']))
+        print("intersectipon is", prev_intersection)
+        if temp != word_prev['current_word']  and len(intersection) == 1 and prev_intersection != intersection:
         # make the dictonaory
         # if i == 1:
         # print("word+prev",word_prev)
-        words_in_grid[i-1]['next_word'] = temp
-        words_in_grid[i-1]['intersection_letter'] = intersection
-        words_in_grid[i-1]['intersection_index_current_word'] = word_prev['current_word'].index(intersection)
-        words_in_grid[i-1]['intersection_index_next_word'] = temp.index(intersection)
-        # print("grid words",words_in_grid[i-1])
-        
-        temp_dict_new = grid_dict.copy()
-        temp_dict_new['current_word'] = temp
-
-        temp_dict_new['current_word_ori'] = "across"
-        
-        if word_prev['current_word_ori'] == "across":
-            temp_dict_new['current_word_ori'] = "down"
+            words_in_grid[i-1]['next_word'] = temp
+            words_in_grid[i-1]['intersection_letter'] = intersection
+            words_in_grid[i-1]['intersection_index_current_word'] = word_prev['current_word'].index(intersection)
+            words_in_grid[i-1]['intersection_index_next_word'] = temp.index(intersection)
+            # print("grid words",words_in_grid[i-1])
             
-        words_in_grid.append(temp_dict_new)
-        prev_intersection = intersection
-        i = i + 1
+            temp_dict_new = grid_dict.copy()
+            temp_dict_new['current_word'] = temp
+
+            temp_dict_new['current_word_ori'] = "across"
+            
+            if word_prev['current_word_ori'] == "across":
+                temp_dict_new['current_word_ori'] = "down"
+                
+            words_in_grid.append(temp_dict_new)
+            prev_intersection = intersection
+            
+            i = i + 1
+            iterations_with_condition_met += 1
+            if iterations_with_condition_met >= max_iterations:
+                break
+    
 
 
 
@@ -80,5 +89,3 @@ with open(file_name, 'w') as json_file:
 
 
 # grid making which will render direcly on the frontend
-outside_grid = []
-inside_grid  = []

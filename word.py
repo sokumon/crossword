@@ -23,7 +23,7 @@ class Word():
 
     def choose_index(self):
         song_id = data['id'][random.randrange(0,data.shape[0])]
-        row_data = data.iloc[song_id]
+        row_data = data.loc[song_id]
         return row_data
 
     def choose_orientation(self,word_ori):
